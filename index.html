@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>pod — 让 AI Agent 只拥有它真正需要的权限</title>
+    <meta
+      name="description"
+      content="pod 从 AI agent 的真实行为里编译最小权限策略：record → compile → enforce → prove。在工具边界执法，留下可独立校验的审计证据。本地优先，Apache-2.0 开源。"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="pod — least-privilege compiler for AI agents" />
+    <meta
+      property="og:description"
+      content="你的 agent 跑了一周。pod 把它真正做过的事，编译成它真正需要的最小策略。"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/schibsted-latin.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/spline-mono-latin.woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

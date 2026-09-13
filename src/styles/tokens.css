@@ -1,0 +1,145 @@
+/*
+  pod — landing page design tokens.
+
+  Anchored on two verifiable sources instead of invented values:
+
+  1. Identity. pod's own DESIGN.md already commits to a cobalt primary and an
+     allow / approve / deny three-state vocabulary. Both are preserved here so
+     the marketing site and the console read as the same product.
+
+  2. Reference. deepseek.com's actual stylesheet tokens are a pure white
+     surface, near-black ink, and exactly one saturated blue. This page adopts
+     that discipline (Restrained strategy) and bends the cobalt hue toward
+     DeepSeek's #4D6BFE without copying the hex — #4D6BFE only reaches 4.09:1
+     against white text, which fails AA on a body-sized button label.
+
+  Every ink value below was checked with the WCAG formula
+  (OKLCH -> sRGB -> relative luminance); the ratio is noted on each line.
+  Light theme only, matching the reference.
+
+  Type was chosen against the brand-voice words *precise, quiet, evidentiary*
+  (the physical object: a laboratory instrument panel, or a ledger somebody
+  actually maintains). The first reflex was Geist — which the design detector
+  flags, correctly, as the current dev-tool monoculture. Schibsted Grotesk
+  keeps the restraint but has a voice of its own; Spline Sans Mono carries the
+  commands, hashes and tool identifiers.
+*/
+
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/schibsted-latin.woff2') format('woff2');
+  /* Latin only — CJK deliberately falls through to the system stack. */
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Spline Sans Mono';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/spline-mono-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+:root {
+  /* ---- surface -------------------------------------------------------- */
+  --bg: oklch(1 0 0); /* pure white — no hidden warmth */
+  --bg-soft: oklch(0.985 0.003 265);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.972 0.005 265);
+  --surface-3: oklch(0.949 0.007 265);
+
+  /* ---- hairline ------------------------------------------------------- */
+  --line: oklch(0.912 0.007 265);
+  --line-strong: oklch(0.858 0.01 265);
+
+  /* ---- ink (contrast vs --bg) ----------------------------------------- */
+  --ink: oklch(0.22 0.012 265); /* 17.3:1 */
+  --ink-2: oklch(0.45 0.015 265); /* 7.4:1  — body floor */
+  --ink-3: oklch(0.52 0.012 265); /* 5.5:1  — lightest text allowed */
+
+  /* ---- brand ---------------------------------------------------------- */
+  --brand: oklch(0.57 0.2 264); /* #376ceb — white text on it = 4.64:1 */
+  --brand-hover: oklch(0.51 0.2 264);
+  --brand-ink: oklch(0.47 0.17 264); /* links on white = 7.1:1 */
+  --brand-soft: oklch(0.962 0.025 264);
+  --brand-soft-2: oklch(0.93 0.04 264);
+  --brand-line: oklch(0.885 0.055 264);
+
+  /* ---- three-state decision vocabulary (pod's own semantics) ---------- */
+  --ok: oklch(0.5 0.13 158); /* 5.5:1 on white, 4.9:1 on --ok-soft */
+  --ok-soft: oklch(0.955 0.03 158);
+  --warn: oklch(0.5 0.13 68); /* 6.2:1 / 5.4:1 */
+  --warn-soft: oklch(0.96 0.035 68);
+  --deny: oklch(0.5 0.19 27); /* 6.6:1 / 5.8:1 */
+  --deny-soft: oklch(0.96 0.03 27);
+
+  --focus: oklch(0.57 0.2 264);
+
+  /* ---- the one dark band ---------------------------------------------- */
+  /*
+    A near-black tinted toward the brand hue. Not pure black, and no neon:
+    the section earns its weight from the contrast against the white page,
+    not from terminal cosplay (see PRODUCT.md anti-references).
+  */
+  --dark-bg: oklch(0.185 0.018 265); /* #0f131b */
+  --dark-surface: oklch(0.235 0.02 265);
+  --dark-line: oklch(0.33 0.018 265);
+  --on-dark: oklch(0.97 0.005 265); /* 17.1:1 on --dark-bg */
+  --on-dark-2: oklch(0.8 0.012 265); /* 10.0:1 */
+  --on-dark-3: oklch(0.72 0.012 265); /* 7.5:1 — lightest text on dark */
+  --brand-on-dark: oklch(0.72 0.15 264); /* 7.4:1 */
+  --ok-on-dark: oklch(0.78 0.15 158); /* 9.9:1 */
+
+  /* ---- type ------------------------------------------------------------ */
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC',
+    sans-serif;
+  --font-mono: 'Spline Sans Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    'PingFang SC', monospace;
+
+  /* Ceiling stays under the 6rem shouting cap; the jump from the h2 step is
+     deliberately large so the hero outranks everything below it. */
+  --fs-display: clamp(2.6rem, 6vw, 5.25rem);
+  /* Section headings carry the scan path now, so they sit further from body
+     size than before (3:1 against --fs-body, not 1.7:1). */
+  --fs-h2: clamp(2rem, 3.5vw, 3.125rem);
+  --fs-h3: clamp(1.125rem, 1.5vw, 1.3rem);
+  --fs-lead: clamp(1.0625rem, 1.25vw, 1.1875rem);
+  --fs-body: 1.0625rem;
+  --fs-sm: 0.9375rem;
+  --fs-xs: 0.8125rem;
+
+  --lh-display: 1.14;
+  --lh-body: 1.68;
+
+  /* ---- space & shape --------------------------------------------------- */
+  --gutter: clamp(20px, 5vw, 48px);
+  --section-y: clamp(72px, 9vw, 136px);
+
+  --r-card: 14px;
+  --r-panel: 16px;
+  --r-field: 10px;
+  --r-pill: 999px;
+
+  /* ---- motion ---------------------------------------------------------- */
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur: 200ms;
+  --dur-reveal: 620ms;
+
+  /* ---- z-index scale (semantic, never arbitrary) ----------------------- */
+  --z-base: 0;
+  --z-sticky: 20;
+  --z-dropdown: 30;
+  --z-nav-panel: 40;
+  --z-toast: 60;
+}

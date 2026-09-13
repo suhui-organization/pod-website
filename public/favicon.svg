@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="pod">
+  <rect width="32" height="32" rx="8.5" fill="#376CEB" />
+  <rect x="7.5" y="8.6" width="17" height="3.4" rx="1.7" fill="#fff" />
+  <rect x="7.5" y="14.3" width="11.4" height="3.4" rx="1.7" fill="#fff" opacity="0.74" />
+  <rect x="7.5" y="20" width="6.4" height="3.4" rx="1.7" fill="#fff" opacity="0.46" />
+</svg>
