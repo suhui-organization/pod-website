@@ -1,0 +1,12 @@
+# Vercel CLI 不读 .gitignore，只认这个文件。不加的话会把下面的东西一起传上去——
+# 光 .playwright-mcp（审查用的截图）就有 12MB，上传体积从 ~1MB 涨到 12.6MB。
+
+# 浏览器审查留下的截图与快照
+.playwright-mcp
+
+# 本地记忆插件的状态
+.remember
+
+# Vercel 在云端自己装依赖、自己构建，这两样都不用上传
+node_modules
+dist
