@@ -55,7 +55,7 @@ src/
     BrandIcon.vue          图标（GitHub / Gitee / 箭头 / 复制 / 对勾）
     PodMark.vue            品牌标记（三段递减的横条）
 public/fonts/              自托管的拉丁字形（Schibsted Grotesk / Spline Sans Mono）
-public/shots/              产品截图（本地控制台，示例数据）
+public/shots/              产品截图（Pod Cloud 控制台，账号已脱敏）
 ```
 
 ## 部署
@@ -78,8 +78,8 @@ pnpm build
   长约 30%，改完要在两种语言下各扫一遍溢出。
 - **改变响应式栅格时保留 `minmax(min(Npx, 100%), 1fr)` 里的 `min()`。** 去掉它会让
   窄屏（< 360px）整页横向溢出。
-- **截图必须来自真实界面，且不能含真实数据。** `public/shots/` 里的两张是本地控制台
-  （`pod ui`）对着一个临时 `~/.pod` 拍的，数据是合成的。重拍方式见下。
+- **截图必须来自真实界面，且账号信息必须脱敏。** `public/shots/` 里的两张取自
+  Pod Cloud 控制台，右上角账号已替换为演示账号。重拍与复核方式见下。
 - 设计上下文见 `PRODUCT.md`（策略与受众）与 `DESIGN.md`（视觉系统）。
 
 ## 重新拍控制台截图
