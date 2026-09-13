@@ -31,9 +31,18 @@ watch(
     }
     document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en'
     document.title = COPY[next].meta.title
+    const { title, description } = COPY[next].meta
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description)
+    /*
+      The og: tags are what a link preview shows. Crawlers mostly do not run
+      JS, so the static values in index.html are the ones that matter — these
+      updates only keep the page consistent for anything that does.
+    */
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
     document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', COPY[next].meta.description)
+      .querySelector('meta[property="og:locale"]')
+      ?.setAttribute('content', next === 'zh' ? 'zh_CN' : 'en_US')
   },
   { immediate: true },
 )
