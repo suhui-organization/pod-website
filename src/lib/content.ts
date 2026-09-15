@@ -9,7 +9,7 @@ export type Locale = 'zh' | 'en'
   are the same in every language — translating them would break copy-paste.
 */
 export const REPO = {
-  version: 'v0.2.0',
+  version: 'v0.3.2',
   github: 'https://github.com/suhui-organization/pod',
   gitee: 'https://gitee.com/suhuisoftwares/pod',
   sponsor: 'https://github.com/sponsors/suhui-organization',
